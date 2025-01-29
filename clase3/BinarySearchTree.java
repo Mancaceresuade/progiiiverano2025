@@ -31,15 +31,6 @@ public class BinarySearchTree {
         root.right.right = new TreeNode(25);
         root.right.right.right = new TreeNode(30);
 
-        // Buscar el valor 7 en el árbol
-        int valueToSearch = 7;
-        TreeNode result = tree.searchBST(root, valueToSearch);
-        
-        if (result != null) {
-            System.out.println("Valor " + result.value + " encontrado en el árbol.");
-        } else {
-            System.out.println("Valor no encontrado en el árbol.");
-        }
 
     }
 }
