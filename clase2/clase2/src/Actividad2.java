@@ -26,14 +26,36 @@ public class Actividad2 {
         // Crear la matriz resultante C
         int[][] C = new int[filasA][columnasB];
 
+        // hasta aca, aprox,  11
+
         // Multiplicar las matrices
-        for (int i = 0; i < filasA; i++) {
-            for (int j = 0; j < columnasB; j++) {
-                for (int k = 0; k < columnasA; k++) {
-                    C[i][j] += A[i][k] * B[k][j];
+        for (int i = 0; i < filasA; i=i+1) {  // 1 + n + 1 + 2*n = 2 + 3n
+            for (int j = 0; j < columnasB; j++) {  // 2 + 3n
+                /*
+                for (int k = 0; k < columnasA; k++) { // 2 + 3n
+                    C[i][j] += A[i][k] * B[k][j]; // 3n
                 }
+                 */
+                int k = 0; // 1
+                while( k < columnasA ) { // n
+                    C[i][j] += A[i][k] * B[k][j]; // 3n    
+                    k++;  // n
+                }    
             }
         }
+        // 2 + 3n + n * ( 2 + 3n + n * ( 2 + 3n + 3n)  )
+        // 2 + 3n + n * ( 2 + 3n + 2n + 3n^2 + 3n^2) 
+        // 2 + 3n + 2n + 3n^2 + 2n^2 + 3n^3 + 3n^3
+        // 2 + 5n + 5n^2 + 6n^3
+        // f(n) = 2 + 5n + 5n^2 + 6n^3
+        // demostracion
+        // 2 + 5n + 5n^2 + 6n^3 <= c * n^3
+        // 2/n^3 + 5n / n^3 + 5 n^2 / n^3 + 6 n^3 / n^3 <= c * n^3 / n^3
+        // 2/n^3 + 5n / n^3 + 5 n^2 / n^3 + 6 <= c
+        // n0 = 1
+        // 2 + 5 + 5 + 6 <= c
+        // 2 + 5 + 5 + 6 <= 18
+        // f(n) = 2 + 5n + 5n^2 + 6n^3 pertenece a O(n^3) para c = 18 y n0= 1 
 
         // Mostrar la matriz resultante C
         System.out.println("Matriz resultante C:");
