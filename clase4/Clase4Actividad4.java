@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 public class Clase4Actividad4 {
     public static void main(String[] args) {
         ArrayList<Integer> numeros = cargarDatos();
-        System.out.println(obtenerMayores(numeros, 4));
+        System.out.println(obtenerMayores(numeros, 3));
     }
 
     private static ArrayList<Integer> obtenerMayores(ArrayList<Integer> numeros, int cantidad) {
@@ -22,29 +22,35 @@ public class Clase4Actividad4 {
         int mitad = (f + i) / 2;
         ArrayList<Integer> izq = obtenerMayores(numeros, cantidad, i, mitad);
         ArrayList<Integer> der = obtenerMayores(numeros, cantidad, mitad, f);
-        return combinar(izq, der);
+        return combinar(izq, der, cantidad);
     }
 
-    private static ArrayList<Integer> combinar(ArrayList<Integer> izq, ArrayList<Integer> der) {
+    private static ArrayList<Integer> combinar(ArrayList<Integer> izq, 
+        ArrayList<Integer> der, int cantidad) {
         PriorityQueue<Integer> resultado = new PriorityQueue<>(Collections.reverseOrder());
         for (Integer integer : izq) {
-            resultado.offer(integer);
+            resultado.add(integer);
         }
         for( Integer integer : der) {
-            resultado.offer(integer);
+            resultado.add(integer);
         }
-        return new ArrayList<>(resultado);
+        ArrayList<Integer> aux = new ArrayList<>(resultado);
+        ArrayList<Integer> res = new ArrayList<>();
+        for (int i = 0; i < cantidad && !aux.isEmpty(); i++) {
+            res.add(aux.get(i));
+        }
+        return res;
     }
 
     private static ArrayList<Integer> casoBase(ArrayList<Integer> numeros, int cantidad, int i, int f) {
         // vacio
-        if (numeros == null || i <= f) {
+        if (numeros == null || i >= f) {
             return new ArrayList<>();
         }
         // un elemento
         if (f - i == 1) {
             ArrayList<Integer> res = new ArrayList<>();
-            res.add(numeros.get(1));
+            res.add(numeros.get(i));
             return res;
         }
         // menor o igual a la cantidad
@@ -59,9 +65,9 @@ public class Clase4Actividad4 {
     private static ArrayList<Integer> cargarDatos() {
         ArrayList<Integer> numeros = new ArrayList<>();
         numeros.add(12);
-        numeros.add(20);
-        numeros.add(10);
-        numeros.add(15);
+        numeros.add(12);
+        numeros.add(12);
+        numeros.add(12);
         return numeros;
     }
 
