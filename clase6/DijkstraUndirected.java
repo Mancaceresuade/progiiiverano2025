@@ -1,4 +1,4 @@
-package clase5;
+package clase6;
 import java.util.*;
 
 public class DijkstraUndirected {
