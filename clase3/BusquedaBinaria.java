@@ -1,4 +1,4 @@
-package clase2;
+package clase3;
 
 public class BusquedaBinaria {
     public static int busquedaBinaria(int[] arreglo, int objetivo) {
