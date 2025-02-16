@@ -1,4 +1,4 @@
-package clase12;
+package clase13;
 
 public class PodaAlfaBeta {
 
