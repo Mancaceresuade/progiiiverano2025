@@ -3,7 +3,7 @@ package clase14;
 public class NQueens {
 
     // Tamaño del tablero
-    private static final int N = 4;
+    private static final int N = 30;
 
     public static void main(String[] args) {
         int[][] board = new int[N][N];
