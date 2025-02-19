@@ -26,7 +26,7 @@ public class GraphController {
     public ResponseEntity<List<String>> searchPath(@RequestParam String start, @RequestParam String end) {
         List<String> path = graphService.searchPath(start, end);
         if (path.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonList("No path found"));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonList("Camino No encontrado"));
         }
         return ResponseEntity.ok(path);
     }
